@@ -80,6 +80,7 @@ export default {
       let length = this.list.length
       for (let i in this.list) {
         this.list[i].status === true ? (count += 1) : (count += 0)
+        this.list[i].status === 1 ? (count += 1) : (count += 0)
       }
       this.count = count
       if (count === length || length === 0) {
@@ -166,6 +167,11 @@ export default {
         .then((res) => {
           if (res.status === 200) {
             this.list = res.data.result
+            this.list.map(function (value, key, arr) {
+              if (value.id) {
+                return value._id = value.id
+              }
+            })
           } else {
             this.$message.error('获取列表失败！')
           }

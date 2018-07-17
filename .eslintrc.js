@@ -32,6 +32,7 @@ module.exports = {
     "no-unreachable": 0,
     "vue/no-side-effects-in-computed-properties": 0,
     "no-trailing-spaces": 0,
+    "no-return-assign": 0,
     "camelcase": 0
   }
 }

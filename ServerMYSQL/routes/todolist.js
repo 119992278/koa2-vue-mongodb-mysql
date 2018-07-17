@@ -12,7 +12,6 @@ router.get('/', async (ctx) => {
 // 查询
 router.get('/todolist/:id', checkToken, async (ctx) => {
   await todolistModel.getTodolistById(ctx.params.id).then(async (result) => {
-    console.log(JSON.stringify(result))
     ctx.body = {
       success: true,
       result
@@ -29,7 +28,6 @@ router.post('/todolist', async (ctx) => {
     'status': loginUser.status
   }
   await todolistModel.createTodolist(newList).then(() => {
-    let newList = ''
     ctx.body = {
       code: 200,
       message: '插入成功.'
@@ -41,13 +39,12 @@ router.post('/todolist', async (ctx) => {
     }
   })
 })
-
+// 删除
 router.delete('/todolist/:userId/:id', async (ctx) => {
-  let loginUser = ctx.request.body
-  await todolistModel.removeTodolist(loginUser.id, loginUser.userId).then(() => {
+  await todolistModel.removeTodolist(ctx.params.userId, ctx.params.id).then(() => {
     ctx.body = {
       code: 200,
-      message: '插入成功.'
+      message: '删除成功.'
     }
   }).catch(error => {
     ctx.body = {
@@ -56,9 +53,18 @@ router.delete('/todolist/:userId/:id', async (ctx) => {
     }
   })
 })
-// router.delete('/todolist/:userId/:id', api.removeTodolist)
 router.put('/todolist/:userId/:id/:status', async (ctx) => {
-
+  await todolistModel.updateTodolist(ctx.params.userId, ctx.params.id, ctx.params.status).then(() => {
+    ctx.body = {
+      code: 200,
+      message: '更新成功.'
+    }
+  }).catch(error => {
+    ctx.body = {
+      code: 500,
+      message: error
+    }
+  })
 })
 
 module.exports = router

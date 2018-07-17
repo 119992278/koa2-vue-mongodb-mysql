@@ -6,31 +6,13 @@ const cors = require('koa2-cors')
 const serve = require('koa-static')
 const path = require('path')
 const historyApiFallback = require('koa-history-api-fallback')
-if (process.env.NODE_ENV === 'mongodb') {
-  console.log('================启动mongodb数据库');
-  (async () => {
-    const {connect, initSchemas} = require('./database/init.js')
-    connect()
-    initSchemas()
-  })()
-} else {
-  console.log('================启动mysql数据库')
-  var mysql = require('mysql')
-  var connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '123456',
-    database: 'todolist',
-    port: '3308'
-  })
-
-  connection.connect()
-
-  connection.query('SELECT 1 + 1 AS solution', function (error, results, fields) {
-    if (error) throw error
-    console.log('The solution is: ', results[0].solution)
-  })
-}
+console.log('env.NODE_ENV=' + process.env.NODE_ENV)
+console.log('================启动mongodb数据库');
+(async () => {
+  const {connect, initSchemas} = require('./database/init.js')
+  connect()
+  initSchemas()
+})()
 
 let user = require('./appApi/user.js')
 let todolist = require('./appApi/todolist.js')
