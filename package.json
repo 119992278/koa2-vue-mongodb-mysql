@@ -7,11 +7,8 @@
   "scripts": {
     "dev": "node build/dev-server.js",
     "build": "node build/build.js",
-    "server": "nodemon -w app.js -w server server-entry.js",
-    "test": "cross-env NODE_ENV=test jest --forceExit --runInBand",
-    "coverage": "cat ./coverage/lcov.info | coveralls",
-    "prod": "cross-env NODE_ENV=production node server-entry.js",
-    "start": "npm run build && npm run prod",
+    "mongodb": "cross-env NODE_ENV=mongodb supervisor server.js",
+    "mysql": "cross-env NODE_ENV=mysql supervisor server.js",
     "start:pm2": "cross-env NODE_ENV=production pm2 start pm2.json"
   },
   "dependencies": {

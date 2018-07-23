@@ -2,7 +2,7 @@
   <el-row class="content">
     <el-col :xs="{span:20,offset:2}" :sm="{span:8,offset:8}">
       <span>
-        欢迎：{{name}}！你的待办事项是：
+        欢迎：{{name}}！客官 <el-button type="info" @click="exit" size="small" class="ml-20">退出</el-button>
       </span>
       <el-input placeholder="请输入待办事项" v-model="todos" @keyup.enter.native="addTodos"></el-input>
       <el-tabs v-model="activeName">
@@ -180,6 +180,10 @@ export default {
           console.log(err)
         })
       return getTodolist
+    },
+    exit () {
+      sessionStorage.clear()
+      this.$router.push('/login')
     }
   }
 }

@@ -15,6 +15,11 @@ module.exports = function (sequelize, DataTypes) {
     password: {
       type: DataTypes.CHAR(128),
       allowNull: true
+    },
+    created_at: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: Date.now()
     }
   }, {
     tableName: 'user'

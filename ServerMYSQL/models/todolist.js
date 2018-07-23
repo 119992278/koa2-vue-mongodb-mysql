@@ -1,5 +1,5 @@
-const db = require('../config/db') // 引入todolist的表结构
-const TodolistSchema = db.todoList.import('../schema/list.js')
+const sequelize = require('../config/db') // 引入todolist的表结构
+const TodolistSchema = sequelize.import('../schema/list.js')
 const getTodolistById = async function (user_id) {
   let todolist = await TodolistSchema.findAll({ // 查找全部的todolist
     where: {

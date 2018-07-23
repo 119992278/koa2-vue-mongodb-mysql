@@ -8,6 +8,7 @@ import VueRouter from 'vue-router'
 import axios from 'axios'
 import Login from './components/Login'
 import TodoList from './components/TodoList'
+import Register from './components/Register'
 
 Vue.prototype.$http = axios // 类似于vue-resource的调用方法
 
@@ -25,6 +26,11 @@ const router = new VueRouter({
     {
       path: '/todolist',
       component: TodoList
+    },
+    {
+      path: '/register',
+      name: 'register',
+      component: Register
     },
     {
       path: '*',

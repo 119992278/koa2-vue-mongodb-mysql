@@ -1,5 +1,4 @@
-const api = require('../controllers/todolist.js')
-const checkToken = require('../jwt/checkToken')
+const checkToken = require('../../jwt/checkToken')
 const koaRouter = require('koa-router')
 const todolistModel = require('../models/todolist.js')
 const router = koaRouter()

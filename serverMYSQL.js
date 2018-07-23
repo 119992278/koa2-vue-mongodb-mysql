@@ -1,17 +1,14 @@
-require('./env')
 const Koa = require('koa')
 const json = require('koa-json')
 const logger = require('koa-logger')
 const user = require('./ServerMYSQL/routes/user.js')
 const test = require('./ServerMYSQL/routes/test.js')
 const todolist = require('./ServerMYSQL/routes/todolist.js')
-const jwt = require('koa-jwt')
 const path = require('path')
 const serve = require('koa-static')
 const historyApiFallback = require('koa2-history-api-fallback')
 const koaRouter = require('koa-router')
 const koaBodyparser = require('koa-bodyparser')
-
 const app = new Koa()
 const router = koaRouter()
 app.use(koaBodyparser())
@@ -19,7 +16,6 @@ app.use(json())
 router.use('/auth', user.routes())
 router.use('/test', test.routes())
 router.use('/api', todolist.routes())
-// router.use('/todolist', jwt({secret: 'vue-koa-demo'}), todolist.routes())
 app.use(router.routes())
 app.use(historyApiFallback())
 app.use(serve(path.resolve('./dist')))
@@ -30,6 +26,7 @@ app.use(async (ctx, next) => {
   const ms = new Date() - start
   console.log(`${ctx.method} ${ctx.url} - ${ms}ms`) // 输出请求响应结果
 })
+
 app.listen(8889, () => {
   console.log('[Server] starting at http://localhost:8889/')
 })

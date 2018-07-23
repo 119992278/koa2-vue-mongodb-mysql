@@ -1,26 +1,30 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('list', {
+  return sequelize.define('NB_CMD_RESPONSE_DETAILS', {
     id: {
       type: DataTypes.INTEGER(11),
       allowNull: false,
       primaryKey: true,
       autoIncrement: true
     },
-    user_id: {
+    response_id: {
       type: DataTypes.INTEGER(11),
+      allowNull: false
+    },
+    result_code: {
+      type: DataTypes.STRING(10),
       allowNull: true
     },
-    content: {
-      type: DataTypes.STRING(255),
+    service_name: {
+      type: DataTypes.STRING(50),
       allowNull: true
     },
-    status: {
-      type: DataTypes.INTEGER(1),
+    service_value: {
+      type: DataTypes.STRING(256),
       allowNull: true
     }
   }, {
-    tableName: 'list'
+    tableName: 'NB_CMD_RESPONSE_DETAILS'
   });
 };

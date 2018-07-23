@@ -1,26 +1,30 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('list', {
-    id: {
+  return sequelize.define('SOS_ARCHIVES', {
+    SOS_ARCHIVES_ID: {
       type: DataTypes.INTEGER(11),
       allowNull: false,
       primaryKey: true,
       autoIncrement: true
     },
-    user_id: {
+    USER_INFO_ID: {
       type: DataTypes.INTEGER(11),
       allowNull: true
     },
-    content: {
+    SOS_ARCHIVES_NAME: {
       type: DataTypes.STRING(255),
       allowNull: true
     },
-    status: {
-      type: DataTypes.INTEGER(1),
+    SOS_ARCHIVES_PHONE: {
+      type: DataTypes.STRING(255),
+      allowNull: true
+    },
+    UPDATE_TIME: {
+      type: DataTypes.DATE,
       allowNull: true
     }
   }, {
-    tableName: 'list'
+    tableName: 'SOS_ARCHIVES'
   });
 };
