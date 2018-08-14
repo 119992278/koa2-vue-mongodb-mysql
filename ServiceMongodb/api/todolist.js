@@ -1,7 +1,7 @@
 const moment = require('moment')
 const Router = require('koa-router')
 const mongoose = require('mongoose')
-const checkToken = require('../jwt/checkToken')
+const checkToken = require('../../jwt/checkToken')
 let router = new Router()
 router.get('/', async (ctx) => {
   ctx.body = {
