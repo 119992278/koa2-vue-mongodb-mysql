@@ -43,6 +43,7 @@ export default {
         user_name: this.account,
         passWord: this.password
       }
+      // const result = this.$http.get('/user/info?user_id=1', obj) // 将信息发送给后端
       const result = this.$http.post('/auth/user', obj) // 将信息发送给后端
       result.then((res) => {
         if (res.data.success) {

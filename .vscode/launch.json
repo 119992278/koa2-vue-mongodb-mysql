@@ -4,11 +4,18 @@
   // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
   "version": "0.2.0",
   "configurations": [
+
     {
       "type": "node",
       "request": "launch",
       "name": "启动程序MYSQL",
       "program": "${workspaceFolder}\\serverMYSQL.js"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "启动程序Mongodb",
+      "program": "${workspaceFolder}\\serverMongodb.js"
     }
   ]
 }

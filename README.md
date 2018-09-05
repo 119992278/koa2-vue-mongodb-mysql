@@ -1,5 +1,5 @@
-# vue-koa-demo
-
+# todolist---vue-koa2-mongodb-mysql
+使用KOA2 + vue 搭建todolist系统
 koa2 + vue + mongodb + mysql
-启动mongodb数据库:npm run mongodb
-启动mysql数据库:npm run mysql
+启动mongodb数据库:npm run mongodb 或者 node serverMongodb
+启动mysql数据库:npm run mysql 或者 node mysql
